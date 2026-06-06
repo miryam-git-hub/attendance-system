@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "CmZvJEDBh7ZH3RQqlWecsRkj28RveQq7MKZIhO6V9Hs=",
+  "Source": "AttendanceSystemBackend",
+  "BasePath": "_content/AttendanceSystemBackend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
