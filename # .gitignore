@@ -1,0 +1,15 @@
+# Backend
+**/bin/
+**/obj/
+**/*.user
+appsettings.Development.json
+.vs/
+
+# Frontend
+**/node_modules/
+**/dist/
+**/.env
+
+# General
+*.suo
+*.log
