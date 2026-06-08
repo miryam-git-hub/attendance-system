@@ -40,6 +40,8 @@ namespace AttendanceSystemBackend.Controllers
 
             if (employee == null)
                 return Unauthorized("עובד לא נמצא עם ת.ז: " + request.IdNumber);
+            Console.WriteLine("INPUT PASSWORD: " + request.Password);
+            Console.WriteLine("HASH FROM DB: " + employee.PasswordHash);
 
             if (!BCrypt.Net.BCrypt.Verify(request.Password, employee.PasswordHash))
                 return Unauthorized("סיסמה שגויה");

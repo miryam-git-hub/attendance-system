@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { createEmployee } from '../api/endpoints'
 
-const EMPTY = { fullName: '', email: '', password: '', role: 'Employee' }
+const EMPTY = { IdNumber:'', fullName: '', email: '', password: '', role: 'Employee' }
 
 export default function AddEmployee() {
   const { user, signOut } = useAuth()
@@ -23,6 +23,7 @@ export default function AddEmployee() {
     setSaving(true)
     try {
       const emp = await createEmployee({
+        IdNumber: form.IdNumber.trim(),
         fullName: form.fullName.trim(),
         email: form.email.trim(),
         password: form.password,
@@ -68,6 +69,17 @@ export default function AddEmployee() {
 
         <section className="card form-card">
           <form onSubmit={handleSubmit} className="form" noValidate>
+          <label className="field">
+              <span>Id Number</span>
+              <input
+                type="text"
+                value={form.IdNumber}
+                onChange={update('IdNumber')}
+                placeholder="123456789"
+                required
+                autoFocus
+              />
+            </label>
             <label className="field">
               <span>Full name</span>
               <input
@@ -76,7 +88,7 @@ export default function AddEmployee() {
                 onChange={update('fullName')}
                 placeholder="Dana Levi"
                 required
-                autoFocus
+               // autoFocus
               />
             </label>
 

@@ -33,9 +33,9 @@ export const deletePasskey = (id) =>
 // --- Employees -------------------------------------------------------------
 // Creates an employee as the current (logged-in) user. Returns NO tokens,
 // so it never affects the active session.
-export const createEmployee = ({ fullName, email, password, role }) =>
+export const createEmployee = ({IdNumber, fullName, email, password, role }) =>
   api
-    .post('/api/employees', { fullName, email, password, role })
+    .post('/api/employees', {IdNumber, fullName, email, password, role })
     .then((r) => r.data)
 
 // --- Attendance ------------------------------------------------------------

@@ -25,6 +25,7 @@ namespace AttendanceSystemBackend.Controllers
         {
             // ולידציה בסיסית
             if (string.IsNullOrWhiteSpace(request.FullName) ||
+                string.IsNullOrWhiteSpace(request.IdNumber)||
                 string.IsNullOrWhiteSpace(request.Email) ||
                 string.IsNullOrWhiteSpace(request.Password))
                 return BadRequest("שם מלא, אימייל וסיסמה הם שדות חובה");
@@ -46,7 +47,8 @@ namespace AttendanceSystemBackend.Controllers
 
             // יצירת העובד
             var employee = new Employee
-            {
+            {    
+               IdNumber = request.IdNumber.Trim(),
                 FullName = request.FullName.Trim(),
                 Email = email,
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password),
@@ -61,6 +63,7 @@ namespace AttendanceSystemBackend.Controllers
             return CreatedAtAction(nameof(Create), new
             {
                 employee.EmployeeId,
+                employee.IdNumber,
                 employee.FullName,
                 employee.Email,
                 employee.Role,
@@ -72,6 +75,7 @@ namespace AttendanceSystemBackend.Controllers
 
     public class CreateEmployeeRequest
     {
+        public string IdNumber { get; set; }=string.Empty;
         public string FullName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
